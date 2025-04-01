@@ -67,7 +67,7 @@ bool SyntaxAnalyzer::simpleexpr(vector<string>& tok, vector<string>& lex, vector
         return false;
     }
     if (tokitr != tok.end()) {
-        if (relop(lex,tok,tokitr,lexit)) {
+        if (relop(lex,tok,tokitr,lexit)){
             return true;
         } else if (arithop(lex,tok,tokitr,lexit)) {
             return true;

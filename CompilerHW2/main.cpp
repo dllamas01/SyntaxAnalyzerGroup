@@ -45,7 +45,6 @@ public:
 };
 
 int main() {
-    SyntaxAnalyzer.populate(tokens, lexemes);
     return 0;
 }
 

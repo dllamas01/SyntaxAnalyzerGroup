@@ -60,20 +60,22 @@ bool SyntaxAnalyzer::simpleexpr(vector<string>& tok, vector<string>& lex, vector
     if (!term(tok,lex,tokitr,lexitr)) {
         return false;
     }
-    if (tokitr != tok.end() && (*tokitr == "t_ARITHOP" || *tokitr == "t_RELOP")) {
-        ++tokitr, ++lexitr;
-        if (!term(tok, lex, tokitr, lexitr)) {
-            return false;
+    if (tokitr != tok.end()) {
+        if (relop(lex,tok,tokitr,lexit)) {
+            return true;
+        } else if (arithop(lex,tok,tokitr,lexit)) {
+            return true;
         }
     }
-    return true;
+    return false;
 }
 
-bool SyntaxAnalyzer::relop(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexit){
-    if (tokitr != tok.end() && (*tokitr == "t_==" || *tokitr == "t_<=" ||
-        *tokitr == "t_>=" || tokitr == "t_!+")) {
+bool SyntaxAnalyzer::relop(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexit) {
+    if (tokitr != tok.end() && (*tokitr == "s_eq" || *tokitr == "s_lt" ||
+        *tokitr == "s_gt" || tokitr == "s_ne")) {
         ++tokitr;
         ++lexitr;
         return true;
-    }
+        }
     return false;
+}

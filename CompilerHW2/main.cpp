@@ -25,8 +25,8 @@ private:
     bool expr();// David G
     bool simpleexpr();//Ethan
     bool term();//David Llamaas
-    bool logicop(); //and, or
-    bool arithop(); // +, -, / // David Llamas
+    bool logicop(); //and, or, David G
+    bool arithop(); // +, -, /, David Llamas
     bool relop(); // Ethan ==, <=, =>, !=
 
 public:

@@ -25,8 +25,8 @@ private:
     bool expr();// David G
     bool simpleexpr();//Ethan
     bool term();//David Llamaas
-    bool logicop(); //and, or
-    bool arithop(); // +, -, / // David Llamas
+    bool logicop(); //and, or, David G
+    bool arithop(); // +, -, /, David Llamas
     bool relop(); // Ethan ==, <=, =>, !=
 
 public:
@@ -43,6 +43,11 @@ public:
     // If no error, vectors contain syntactically correct source code
 
 };
+
+int main() {
+    SyntaxAnalyzer.populate(tokens, lexemes);
+    return 0;
+}
 
 //Ethan
 bool SyntaxAnalyzer::stmtlist(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {

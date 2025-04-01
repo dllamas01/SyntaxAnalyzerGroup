@@ -28,7 +28,7 @@ private:
     bool logicop(); //and, or, David G
     bool arithop(); // +, -, /, David Llamas
     bool relop(); // Ethan ==, <=, =>, !=
-
+    //Ethan doing vdecassignment
 public:
     SyntaxAnalyzer(istream& infile);
     // pre: 1st parameter consists of an open file containing a source code's

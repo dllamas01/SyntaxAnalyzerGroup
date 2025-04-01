@@ -15,7 +15,7 @@ private:
     // other private methods
 
     bool stmtlist(); //Ethan
-    int stmt(); //Ethan
+    int stmt();
     bool ifstmt();
     bool elsepart(); //Ethan
     bool whilestmt();
@@ -23,7 +23,7 @@ private:
     bool inputstmt();
     bool outputstmt();
     bool expr();
-    bool simpleexpr();
+    bool simpleexpr();//Ethan
    bool term();
    bool logicop(); //and, or
     bool arithop(); // +, -, /

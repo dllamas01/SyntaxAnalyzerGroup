@@ -14,10 +14,10 @@ private:
 
     // other private methods
 
-    bool stmtlist(); //Ethan
-    int stmt(); //Ethan
-    bool ifstmt();
-    bool elsepart(); //Ethan
+    bool stmtlist();    //Ethan
+    int stmt();         //Ethan
+    bool ifstmt();      //David G
+    bool elsepart();    //Ethan
     bool whilestmt();
     bool assignstmt();
     bool inputstmt();

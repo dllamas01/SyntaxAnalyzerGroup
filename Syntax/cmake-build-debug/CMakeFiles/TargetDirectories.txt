@@ -1,0 +1,3 @@
+C:/Users/osmid/CLionProjects/Syntax/cmake-build-debug/CMakeFiles/Syntax.dir
+C:/Users/osmid/CLionProjects/Syntax/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/osmid/CLionProjects/Syntax/cmake-build-debug/CMakeFiles/rebuild_cache.dir

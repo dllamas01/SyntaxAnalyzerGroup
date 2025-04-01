@@ -14,19 +14,19 @@ private:
 
     // other private methods
 
-    bool stmtlist();    //Ethan
-    int stmt();         //Ethan
-    bool ifstmt();      //David G
-    bool elsepart();    //Ethan
-    bool whilestmt();
-    bool assignstmt();
-    bool inputstmt();
-    bool outputstmt();
-    bool expr();
-    bool simpleexpr();
-   bool term();
-   bool logicop(); //and, or
-    bool arithop(); // +, -, /
+    bool stmtlist(); //Ethan
+    int stmt(); // David G
+    bool ifstmt();// David G
+    bool elsepart(); //Ethan
+    bool whilestmt();//David Llamas
+    bool assignstmt(); // David Llamas
+    bool inputstmt(); // David Llamas
+    bool outputstmt();// David G
+    bool expr();// David G
+    bool simpleexpr();//Ethan
+    bool term();//David Llamaas
+    bool logicop(); //and, or
+    bool arithop(); // +, -, / // David Llamas
     bool relop(); // Ethan ==, <=, =>, !=
 
 public:

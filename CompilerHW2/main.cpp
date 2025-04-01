@@ -44,6 +44,7 @@ public:
 
 };
 
+//Ethan
 bool SyntaxAnalyzer::stmtlist(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tokens.end() && *tokitr == "}") {
         return true;
@@ -56,6 +57,7 @@ bool SyntaxAnalyzer::stmtlist(vector<string>& tok, vector<string>& lex, vector<s
     return true;
 }
 
+//Ethan
 bool SyntaxAnalyzer::simpleexpr(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexit){
     if (!term(tok,lex,tokitr,lexitr)) {
         return false;
@@ -70,6 +72,7 @@ bool SyntaxAnalyzer::simpleexpr(vector<string>& tok, vector<string>& lex, vector
     return false;
 }
 
+//Ethan
 bool SyntaxAnalyzer::relop(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexit) {
     if (tokitr != tok.end() && (*tokitr == "s_eq" || *tokitr == "s_lt" ||
         *tokitr == "s_gt" || tokitr == "s_ne")) {

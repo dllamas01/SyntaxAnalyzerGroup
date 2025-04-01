@@ -15,14 +15,14 @@ private:
     // other private methods
 
     bool stmtlist(); //Ethan
-    int stmt();
-    bool ifstmt();
+    int stmt(); // David G
+    bool ifstmt();// David G
     bool elsepart(); //Ethan
     bool whilestmt();//David Llamas
     bool assignstmt(); // David Llamas
     bool inputstmt(); // David Llamas
-    bool outputstmt();
-    bool expr();
+    bool outputstmt();// David G
+    bool expr();// David G
     bool simpleexpr();//Ethan
     bool term();//David Llamaas
     bool logicop(); //and, or

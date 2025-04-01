@@ -18,15 +18,15 @@ private:
     int stmt();
     bool ifstmt();
     bool elsepart(); //Ethan
-    bool whilestmt();
-    bool assignstmt();
-    bool inputstmt();
+    bool whilestmt();//David Llamas
+    bool assignstmt(); // David Llamas
+    bool inputstmt(); // David Llamas
     bool outputstmt();
     bool expr();
     bool simpleexpr();//Ethan
-   bool term();
-   bool logicop(); //and, or
-    bool arithop(); // +, -, /
+    bool term();//David Llamaas
+    bool logicop(); //and, or
+    bool arithop(); // +, -, / // David Llamas
     bool relop(); // Ethan ==, <=, =>, !=
 
 public:

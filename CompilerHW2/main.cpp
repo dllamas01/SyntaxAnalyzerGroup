@@ -2,6 +2,9 @@
 #include <fstream>
 #include <vector>
 #include <string>
+
+using namespace std;
+
 class SyntaxAnalyzer{
 private:
     vector<string> lexemes;
@@ -24,10 +27,10 @@ private:
     bool outputstmt();
     bool expr();
     bool simpleexpr();
-   bool term();
-   bool logicop(); //and, or
+    bool term();
+    bool logicop(); //and, or
     bool arithop(); // +, -, /
-    bool relop(); // Ethan ==, <=, =>, !=
+    bool relop(); // Ethan ==, <, >, !=
 
 public:
     SyntaxAnalyzer(istream& infile);

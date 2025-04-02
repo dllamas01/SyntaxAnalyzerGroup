@@ -3,7 +3,8 @@
 
 bool simpleexpr(){return true;} bool stmtlist(){return true;} bool whilestmt(){return true;}
 bool assignstmt(){return true;} bool inputstmt(){return true;} bool vdecassign(){return true;}
-bool elsepart(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+bool //SyntaxAnalyzer::
+elsepart(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (*tokitr == "t_else") {
         tokitr++; lexitr++;
         return true;
@@ -11,7 +12,8 @@ bool elsepart(vector<string>& tok, vector<string>& lex, vector<string>::iterator
     return true;
 }
 
-bool logicop(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+bool //SyntaxAnalyzer::
+logicop(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tok.end()) {
         if (*tokitr == "t_and" || *tokitr == "t_or" ) {
             ++tokitr; ++lexitr;
@@ -21,11 +23,12 @@ bool logicop(vector<string>& tok, vector<string>& lex, vector<string>::iterator&
     return false;
 }
 
-bool expr(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+bool //SyntaxAnalyzer::
+expr(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tok.end()) {
         if ( simpleexpr() ) {
             ++tokitr;++lexitr;
-            if (tokitr != tok.end() && logicop(tok,lex,tokitr,lexitr)) {
+            if (tokitr != tok.end() && logicop(tok,tokitr,lexitr)) {
                 if (tokitr != tok.end() && simpleexpr()) {
                     ++tokitr;++lexitr;
                 }
@@ -38,42 +41,71 @@ bool expr(vector<string>& tok, vector<string>& lex, vector<string>::iterator& to
     return false;
 }
 
-bool outputstmt(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
-    if (tokitr != tok.end()) {
-        if (*tokitr == "t_text") {
+
+
+bool //SyntaxAnalyzer::
+checkStmtList(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+    if (*tokitr == "s_lbrace" && tokitr != tok.end()) {
+        ++tokitr; ++lexitr;
+        if (stmtlist()) {
             ++tokitr; ++lexitr;
-            return true;
-        }
-        else if ( expr(tok,lex,tokitr,lexitr) ) {
-            return true;
+            if (*tokitr == "s_rbrace" && tokitr != tok.end()) {
+                ++tokitr; ++lexitr;
+                return true;
+            }
         }
     }
     return false;
 }
 
 
+bool //SyntaxAnalyzer::
+checkExpr(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+    if (*tokitr == "s_lparen") {
+        ++tokitr; ++lexitr;
+        if (expr(tok,tokitr,lexitr)&& tokitr != tok.end() ) {
+            if (*tokitr == "s_rparen") {
+                ++tokitr; ++lexitr;
+                return true;
+            }
+        }
+    }
+    return false;
+}
 
-bool ifstmt(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+bool //SyntaxAnalyzer::
+outputstmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     ++tokitr; ++lexitr;
     if (tokitr != tok.end()) {
         if (*tokitr == "s_lparen") {
             ++tokitr; ++lexitr;
-            if ( expr(tok,lex,tokitr,lexitr)) {
+            if (tokitr != tok.end() && *tokitr == "t_text") {
+                ++tokitr; ++lexitr;
                 if (*tokitr == "s_rparen") {
                     ++tokitr; ++lexitr;
-                    if (*tokitr == "s_lbrace") {
-                        ++tokitr; ++lexitr;
-                        if (stmtlist()) {
-                            ++tokitr; ++lexitr;
-                            if (*tokitr == "s_rbrace") {
-                                ++tokitr; ++lexitr;
-                                if(elsepart(tok,lex,tokitr,lexitr)) {
-                                    return true;
-                                }
+                    return true;
+                }
+            }
+            else if ( expr(tok,tokitr,lexitr) ) {
+                if (*tokitr == "s_rparen") {
+                    ++tokitr; ++lexitr;
+                    return true;
+                }
+            }
+        }
+    }
+    return false;
 
-                            }
-                        }
-                    }
+}
+
+bool //SyntaxAnalyzer::
+ifstmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+    ++tokitr; ++lexitr;
+    if (tokitr != tok.end()) {
+        if (checkExpr(tok ,tokitr,lexitr)) {
+            if (checkStmtList(tok ,tokitr,lexitr)) {
+                if(elsepart(tok ,tokitr,lexitr)) {
+                    return true;
                 }
             }
         }
@@ -83,13 +115,15 @@ bool ifstmt(vector<string>& tok, vector<string>& lex, vector<string>::iterator& 
 }
 
 
-int stmt(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+int //SyntaxAnalyzer::
+stmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tok.end()) {
-        if ( ifstmt(tok,lex,tokitr,lexitr) ) {
+
+        if ( ifstmt(tok ,tokitr,lexitr) ) {
             return 1;
         }
 
-        if (outputstmt(tok,lex,tokitr,lexitr)) {
+        if (outputstmt(tok ,tokitr,lexitr)) {
             return 5;
         }
 
@@ -113,14 +147,14 @@ int stmt(vector<string>& tok, vector<string>& lex, vector<string>::iterator& tok
 
 
 int main() {
-    vector<string> tokens = {"t_if", "s_lparen","simpleExpr","s_rparen","s_lbrace","StatementList","s_rbrace"};
-    vector<string> lexemes= {"if", "(","simpleExpr",")","{","StatementList","}"};
+    vector<string> tokens = {"t_output", "s_lparen","simpleExpr","s_rparen","t_output", "s_lparen","t_text","s_rparen"};
+    vector<string> lexemes= {"output", "(","simpleExpr",")","output","(","textHere",")"};
     vector<string>::iterator tokitr;
     vector<string>::iterator lexitr;
     tokitr = tokens.begin();
     lexitr = lexemes.begin();
     while (tokitr != tokens.end()) {
-        if (ifstmt(tokens,lexemes,tokitr,lexitr)) {
+        if (outputstmt(tokens ,tokitr,lexitr)) {
             cout << "Works" << endl;
         }
         else {
@@ -129,21 +163,6 @@ int main() {
         }
     }
 
-    // vector<string> tokens = {"t_if", "t_while","s_assign","t_input","t_output","t_text"};
-    // vector<string> lexemes= {"if(){}", "while(){}","=","input","output","text"};
-    // vector<string>::iterator tokitr;
-    // vector<string>::iterator lexitr;
-    // tokitr = tokens.begin();
-    // lexitr = lexemes.begin();
-    // while (tokitr != tokens.end()) {
-    //     if (stmt(tokens,lexemes,tokitr,lexitr)) {
-    //         cout << "Works" << endl;
-    //     }
-    //     else {
-    //         cout << "Dosnt work" << endl;
-    //         break;
-    //     }
-    // }
 
 }
 

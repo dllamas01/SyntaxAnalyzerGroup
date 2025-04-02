@@ -17,19 +17,40 @@ private:
     // other private methods
     bool vdecassign();  //Ethan
     bool stmtlist();    //Ethan
-    int stmt();         //ME
-    bool ifstmt();      //ME
     bool elsepart();    //Ethan
     bool whilestmt();   //David L
     bool assignstmt();  //David L
     bool inputstmt();   //David L
-    bool outputstmt();  //ME
-    bool expr();        //ME
     bool simpleexpr();  //Ethan
     bool term();        //David L
-    bool logicop();     //ME
     bool arithop();     //David L
     bool relop();       //Ethan
+
+    bool elsepart(vector<string> &tok , vector<string>::iterator &tokitr,
+                  vector<string>::iterator &lexitr);
+
+    bool logicop(vector<string> &tok , vector<string>::iterator &tokitr,
+                 vector<string>::iterator &lexitr);
+
+    bool expr(vector<string> &tok , vector<string>::iterator &tokitr,
+              vector<string>::iterator &lexitr);
+
+    bool outputstmt(vector<string> &tok , vector<string>::iterator &tokitr,
+                    vector<string>::iterator &lexitr);
+
+    bool ifstmt(vector<string> &tok , vector<string>::iterator &tokitr,
+                vector<string>::iterator &lexitr);
+
+    int stmt(vector<string> &tok , vector<string>::iterator &tokitr,
+             vector<string>::iterator &lexitr);
+
+    //A bool that returns true or false if a StmtList call is surrounded by brackets
+    bool checkStmtList(vector<string>& tok, vector<string>::iterator& tokitr,
+        vector<string>::iterator& lexitr);
+
+    //A bool that returns true or false if an Expr call is surrounded by parentheses
+    bool checkExpr(vector<string>& tok, vector<string>::iterator& tokitr,
+        vector<string>::iterator& lexitr);
 
 public:
     SyntaxAnalyzer(istream& infile);

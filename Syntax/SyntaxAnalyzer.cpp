@@ -114,31 +114,28 @@ ifstmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::it
     return false;
 }
 
-
+//Stmt still needs work, but I need the other methods. thats is why some staments have the ++
+//and the others dont
 int //SyntaxAnalyzer::
 stmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tok.end()) {
-
-        if ( ifstmt(tok ,tokitr,lexitr) ) {
-            return 1;
+        if (*tokitr == "t_if") {
+            if (ifstmt(tok ,tokitr,lexitr)){cout<< "If" << endl; return 1;}
         }
-
-        if (outputstmt(tok ,tokitr,lexitr)) {
-            return 5;
+        else if (*tokitr == "t_while") {
+            if (whilestmt()) {++tokitr;++lexitr; cout<< "While" << endl; return 2;}
         }
-
-        if ( whilestmt()) {
-            return 2;
+        else if (*tokitr == "t_id") {
+            if (assignstmt()) {++tokitr;++lexitr; cout<< "Assign" << endl; return 3;}
         }
-        if ( assignstmt()) {
-            return 3;
+        else if (*tokitr == "t_input") {
+            if (inputstmt()) {++tokitr;++lexitr; cout<< "Input" << endl; return 4;}
         }
-        if ( inputstmt()) {
-            return 4;
+        else if (*tokitr == "t_output") {
+            if (outputstmt(tok,tokitr,lexitr)) {cout<< "Output" << endl; return 5;}
         }
-
-        if (vdecassign()) {
-            return 6;
+        else if (*tokitr == "t_integer" || *tokitr == "t_string") {
+            if (vdecassign()) {++tokitr;++lexitr; cout<< "Vdec Assign" << endl; return 6;}
         }
     }
     return 0;

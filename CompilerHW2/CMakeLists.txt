@@ -3,4 +3,6 @@ project(CompilerHW2)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(CompilerHW2 main.cpp)
+add_executable(CompilerHW2
+        SyntaxAnalyzer.cpp
+        SyntaxAnalyzer.h)

@@ -2,6 +2,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+using namespace std;
 class SyntaxAnalyzer{
 private:
     vector<string> lexemes;
@@ -10,7 +11,7 @@ private:
     vector<string>::iterator tokitr;
     // map of variables and their datatype
     // i.e. sum t_integer
-    map<string, string> symboltable;
+    // map<string, string> symboltable;
 
     // other private methods
     bool vdecassign(); //Ethan
@@ -28,9 +29,23 @@ private:
     bool logicop(); //and, or, David G
     bool arithop(); // +, -, /, David Llamas
     bool relop(); // Ethan ==, <=, =>, !=
-    //Ethan doing vdecassignment
+
+
 public:
-    SyntaxAnalyzer(istream& infile);
+    SyntaxAnalyzer::SyntaxAnalyzer(istream& infile) {
+        string wordPair;
+        while (getline(infile, wordPair)) {
+            size_t pos = wordPair.find(" ");
+            if (pos != string::npos) {
+                string token = wordPair.substr(0, pos);
+                string lex = wordPair.substr(pos + 1);
+                tokens.push_back(token);
+                lexemes.push_back(lex);
+            }
+        }
+        tokitr = tokens.begin();
+        lexitr = lexemes.begin();
+    }
     // pre: 1st parameter consists of an open file containing a source code's
     //	valid scanner/lexical analyzer output.  This data must be in the form: token : lexeme
     // post: the vectors have been populated

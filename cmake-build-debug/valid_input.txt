@@ -1,0 +1,31 @@
+t_input input
+t_lparen (
+t_id x
+t_rparen )
+x
+t_id x
+t_eq =
+t_num 5
+t_semicolon ;
+
+t_id y
+t_eq =
+t_id x
+t_semicolon ;
+
+t_while while
+t_lparen (
+t_id x
+t_rparen )
+t_lbrace {
+t_id x
+t_eq =
+t_id x
+t_plus +
+t_num 1
+t_semicolon ;
+t_input input
+t_lparen (
+t_id y
+t_rparen )
+t_rbrace }

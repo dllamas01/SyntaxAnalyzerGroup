@@ -13,7 +13,7 @@ private:
     map<string, string> symboltable;
 
     // other private methods
-
+    bool vdecassign(); //Ethan
     bool stmtlist(); //Ethan
     int stmt(); // David G
     bool ifstmt();// David G

@@ -269,6 +269,49 @@ bool SyntaxAnalyzer::stmtlist(vector<string>& tok, vector<string>::iterator& tok
     return true;
 }
 
+//David G
+int SyntaxAnalyzer::stmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+    if (tokitr != tok.end()) {
+        if (*tokitr == "t_if") {
+            if (ifstmt(tok ,tokitr,lexitr)) {
+                return 1;
+            }
+            else {return 0;}
+        }
+        else if (*tokitr == "t_while") {
+            if (whilestmt(tok,tokitr,lexitr)) {
+                return 1;
+            }
+            else {return 0;}
+        }
+        else if (*tokitr == "t_id") {
+            if (assignstmt(tok,  tokitr, lexitr)) {
+                return 1;
+            }
+            else {return 0;}
+        }
+        else if (*tokitr == "t_input") {
+            if (inputstmt(tok,  tokitr, lexitr)) {
+                return 1;
+            }
+            else {return 0;}
+        }
+        else if (*tokitr == "t_output") {
+            if (outputstmt(tok,tokitr,lexitr)) {
+                return 1;
+            }
+            else {return 0;}
+        }
+        else if (*tokitr == "t_integer" || *tokitr == "t_string") {
+            if (vdecassign()) {
+                return 1;
+            }
+            else {return 0;}
+        }
+        return 2;
+    }
+}
+
 bool SyntaxAnalyzer::assignstmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tok.end() && *tokitr == "t_id") {
         string varName = *lexitr;
@@ -390,11 +433,13 @@ bool SyntaxAnalyzer::checkDeclaration(const string& varName) {
     }
     return true;
 }
-void SyntaxAnalyzer::declareVariable(const string& varName) {
-    if (symboltable.find(varName) == symboltable.end()) {
-        symboltable[varName] = "unknown";
-    }
-}
+
+
+// void SyntaxAnalyzer::declareVariable(const string& varName) {
+//     if (symboltable.find(varName) == symboltable.end()) {
+//         symboltable[varName] = "unknown";
+//     }
+// }
 
 
 SyntaxAnalyzer::SyntaxAnalyzer(istream& infile) {

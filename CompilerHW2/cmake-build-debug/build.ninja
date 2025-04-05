@@ -49,13 +49,7 @@ cmake_ninja_workdir = C$:/Users/super/Documents/GitHub/SyntaxAnalyzerGroup/Compi
 
 build cmake_object_order_depends_target_CompilerHW2: phony || .
 
-build CMakeFiles/CompilerHW2.dir/main.cpp.obj: CXX_COMPILER__CompilerHW2_unscanned_Debug C$:/Users/super/Documents/GitHub/SyntaxAnalyzerGroup/CompilerHW2/main.cpp || cmake_object_order_depends_target_CompilerHW2
-  DEP_FILE = CMakeFiles\CompilerHW2.dir\main.cpp.obj.d
-  FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
-  OBJECT_DIR = CMakeFiles\CompilerHW2.dir
-  OBJECT_FILE_DIR = CMakeFiles\CompilerHW2.dir
-
-build CMakeFiles/CompilerHW2.dir/SyntaxAnalyzer.cpp.obj: CXX_COMPILER__CompilerHW2_unscanned_Debug C$:/Users/super/Documents/GitHub/SyntaxAnalyzerGroup/CompilerHW2/cmake-build-debug/SyntaxAnalyzer.cpp || cmake_object_order_depends_target_CompilerHW2
+build CMakeFiles/CompilerHW2.dir/SyntaxAnalyzer.cpp.obj: CXX_COMPILER__CompilerHW2_unscanned_Debug C$:/Users/super/Documents/GitHub/SyntaxAnalyzerGroup/CompilerHW2/SyntaxAnalyzer.cpp || cmake_object_order_depends_target_CompilerHW2
   DEP_FILE = CMakeFiles\CompilerHW2.dir\SyntaxAnalyzer.cpp.obj.d
   FLAGS = -g -std=gnu++20 -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles\CompilerHW2.dir
@@ -69,7 +63,7 @@ build CMakeFiles/CompilerHW2.dir/SyntaxAnalyzer.cpp.obj: CXX_COMPILER__CompilerH
 #############################################
 # Link the executable CompilerHW2.exe
 
-build CompilerHW2.exe: CXX_EXECUTABLE_LINKER__CompilerHW2_Debug CMakeFiles/CompilerHW2.dir/main.cpp.obj CMakeFiles/CompilerHW2.dir/SyntaxAnalyzer.cpp.obj
+build CompilerHW2.exe: CXX_EXECUTABLE_LINKER__CompilerHW2_Debug CMakeFiles/CompilerHW2.dir/SyntaxAnalyzer.cpp.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\CompilerHW2.dir

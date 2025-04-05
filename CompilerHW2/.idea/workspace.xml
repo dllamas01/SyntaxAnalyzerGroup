@@ -28,7 +28,17 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75b45551-388c-40f8-8c09-5ccc14898f3d" name="Changes" comment="" />
+    <list default="true" id="75b45551-388c-40f8-8c09-5ccc14898f3d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SyntaxAnalyzer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SyntaxAnalyzer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-1c5f5a1e9f3c222a5815.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/index-2025-04-04T19-03-56-0138.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/.cmake/api/v1/reply/target-CompilerHW2-Debug-9f1e3d0beb272817f4eb.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/build.ninja" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -80,6 +90,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\super\Documents\GitHub\SyntaxAnalyzerGroup\CompilerHW2" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\super\Documents\GitHub\SyntaxAnalyzerGroup\CompilerHW2" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="CompilerHW2" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="CompilerHW2" TARGET_NAME="CompilerHW2" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="CompilerHW2" RUN_TARGET_NAME="CompilerHW2">
@@ -97,6 +110,9 @@
       <option name="presentableId" value="Default" />
       <updated>1743515405963</updated>
       <workItem from="1743515408392" duration="2971000" />
+      <workItem from="1743789901323" duration="4395000" />
+      <workItem from="1743869821525" duration="827000" />
+      <workItem from="1743872510011" duration="1666000" />
     </task>
     <servers />
   </component>

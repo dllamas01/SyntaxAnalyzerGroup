@@ -123,44 +123,60 @@ bool SyntaxAnalyzer::relop(vector<string>& tok, vector<string>::iterator& tokitr
 
 
 //David LL
-bool SyntaxAnalyzer::inputstmt(vector<string>& tok,  vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
-    bool valid = false;
+bool SyntaxAnalyzer::inputstmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tok.end() && *tokitr == "t_input") {
         ++tokitr; ++lexitr;
         if (tokitr != tok.end() && *tokitr == "t_lparen") {
             ++tokitr; ++lexitr;
             if (tokitr != tok.end() && *tokitr == "t_id") {
-                ++tokitr; ++lexitr;
-                if (tokitr != tok.end() && *tokitr == "t_rparen") {
+                string varName = *lexitr;
+                if (checkDeclaration(varName)) {
                     ++tokitr; ++lexitr;
-                    valid = true;
+                    if (tokitr != tok.end() && *tokitr == "t_rparen") {
+                        ++tokitr; ++lexitr;
+                        return true;
+                    }
+                } else {
+                    return false; // declaration check failed
                 }
             }
         }
     }
-    return valid;
+    return false;
 }
 
 //David LL
-bool SyntaxAnalyzer::term(vector<string>& tok,  vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
-    if (tokitr == tok.end()) return false;
-    if (*tokitr == "t_num" || *tokitr == "t_str" || *tokitr == "t_id") {
-        ++tokitr;++lexitr;
-        return true;
-    }
-    if (*tokitr == "t_lparen") {
-        ++tokitr;++lexitr;
-        if (!expr(tok,  tokitr, lexitr)) {
-            return false; // expected an expression
+bool SyntaxAnalyzer::term(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
+    if (tokitr != tok.end()) {
+        if (*tokitr == "t_id") {
+            string varName = *lexitr;
+            if (checkDeclaration(varName)) {
+                ++tokitr; ++lexitr;
+                return true;
+            } else {
+                return false;
+            }
         }
-        if (tokitr != tok.end() && *tokitr == "t_rparen") {
-            ++tokitr;++lexitr;
+        if (*tokitr == "t_num" || *tokitr == "t_str") {
+            ++tokitr; ++lexitr;
             return true;
-        } else {
-            return false; // expected ')'
+        }
+        if (*tokitr == "t_lparen") {
+            ++tokitr; ++lexitr;
+            if (expr(tok, tokitr, lexitr)) {
+                if (tokitr != tok.end() && *tokitr == "t_rparen") {
+                    ++tokitr; ++lexitr;
+                    return true;
+                } else {
+                    cout << "ERROR: Expected ')' after expression.\n";
+                    return false;
+                }
+            } else {
+                return false;
+            }
         }
     }
-    return false; // not a valid term
+    return false;
 }
 
 //David LL
@@ -269,130 +285,6 @@ bool SyntaxAnalyzer::stmtlist(vector<string>& tok, vector<string>::iterator& tok
     return true;
 }
 
-//David G
-int SyntaxAnalyzer::stmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
-    if (tokitr != tok.end()) {
-        if (*tokitr == "t_if") {
-            if (ifstmt(tok ,tokitr,lexitr)) {
-                return 1;
-            }
-            else {return 0;}
-        }
-        else if (*tokitr == "t_while") {
-            if (whilestmt(tok,tokitr,lexitr)) {
-                return 1;
-            }
-            else {return 0;}
-        }
-        else if (*tokitr == "t_id") {
-            if (assignstmt(tok,  tokitr, lexitr)) {
-                return 1;
-            }
-            else {return 0;}
-        }
-        else if (*tokitr == "t_input") {
-            if (inputstmt(tok,  tokitr, lexitr)) {
-                return 1;
-            }
-            else {return 0;}
-        }
-        else if (*tokitr == "t_output") {
-            if (outputstmt(tok,tokitr,lexitr)) {
-                return 1;
-            }
-            else {return 0;}
-        }
-        else if (*tokitr == "t_integer" || *tokitr == "t_string") {
-            if (vdecassign()) {
-                return 1;
-            }
-            else {return 0;}
-        }
-        return 2;
-    }
-}
-
-bool SyntaxAnalyzer::assignstmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
-    if (tokitr != tok.end() && *tokitr == "t_id") {
-        string varName = *lexitr;
-        declareVariable(varName);
-        ++tokitr; ++lexitr;
-        if (tokitr != tok.end() && *tokitr == "t_eq") {
-            ++tokitr; ++lexitr;
-            if (expr(tok, tokitr, lexitr)) {
-                if (tokitr != tok.end() && *tokitr == "t_semicolon") {
-                    ++tokitr; ++lexitr;
-                    return true;
-                } else {
-                    cout << "ERROR: Missing semicolon at end of assignment statement.\n";
-                }
-            } else {
-                cout << "ERROR: Invalid expression on right-hand side of assignment.\n";
-            }
-        } else {
-            cout << "ERROR: Expected '=' after identifier in assignment.\n";
-        }
-    }
-    return false;
-}
-
-
-bool SyntaxAnalyzer::inputstmt(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
-    if (tokitr != tok.end() && *tokitr == "t_input") {
-        ++tokitr; ++lexitr;
-        if (tokitr != tok.end() && *tokitr == "t_lparen") {
-            ++tokitr; ++lexitr;
-            if (tokitr != tok.end() && *tokitr == "t_id") {
-                string varName = *lexitr;
-                if (checkDeclaration(varName)) {
-                    ++tokitr; ++lexitr;
-                    if (tokitr != tok.end() && *tokitr == "t_rparen") {
-                        ++tokitr; ++lexitr;
-                        return true;
-                    }
-                } else {
-                    return false; // declaration check failed
-                }
-            }
-        }
-    }
-    return false;
-}
-
-bool SyntaxAnalyzer::term(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
-    if (tokitr != tok.end()) {
-        if (*tokitr == "t_id") {
-            string varName = *lexitr;
-            if (checkDeclaration(varName)) {
-                ++tokitr; ++lexitr;
-                return true;
-            } else {
-                return false;
-            }
-        }
-        if (*tokitr == "t_num" || *tokitr == "t_str") {
-            ++tokitr; ++lexitr;
-            return true;
-        }
-        if (*tokitr == "t_lparen") {
-            ++tokitr; ++lexitr;
-            if (expr(tok, tokitr, lexitr)) {
-                if (tokitr != tok.end() && *tokitr == "t_rparen") {
-                    ++tokitr; ++lexitr;
-                    return true;
-                } else {
-                    cout << "ERROR: Expected ')' after expression.\n";
-                    return false;
-                }
-            } else {
-                return false;
-            }
-        }
-    }
-    return false;
-}
-
-
 //David LL
 bool SyntaxAnalyzer::whilestmt(vector<string>& tok,  vector<string>::iterator& tokitr, vector<string>::iterator& lexitr) {
     if (tokitr != tok.end() && *tokitr == "t_while") {
@@ -482,9 +374,9 @@ int main() {
     vector<string>::iterator lexitr;
     tokitr = tokens.begin();
     lexitr = lexemes.begin();
-    // SyntaxAnalyzer SyntaxAnalyzer(tokens);
+    SyntaxAnalyzer SyntaxAnalyzer();
     while (tokitr != tokens.end()) {
-        if (stmt(tokens ,tokitr,lexitr)) {
+        if (SyntaxAnalyzer::stmt(tokens ,tokitr,lexitr)) {
             cout << "Works" << endl;
         }
         else {

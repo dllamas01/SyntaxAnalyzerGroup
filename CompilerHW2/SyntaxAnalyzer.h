@@ -53,6 +53,9 @@ private:
     bool checkExpr(vector<string> &tok, vector<string>::iterator &tokitr,
                    vector<string>::iterator &lexitr);
 
+
+    bool checkDeclaration(const string& varName);
+
 public:
     SyntaxAnalyzer(istream &infile);
 

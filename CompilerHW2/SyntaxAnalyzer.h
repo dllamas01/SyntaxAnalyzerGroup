@@ -17,9 +17,9 @@ private:
     map<string, string> symboltable;
 
     // other private methods
-    bool vdecassign(); //Ethan
+    bool vdecassign(vector<string> &tok,vector<string>::iterator &tokitr,vector<string>::iterator &lexitr); //Ethan
     bool stmtlist(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //Ethan
-    bool elsepart(); //Ethan
+    bool elsepart(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr); //Ethan
     bool whilestmt(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
     bool assignstmt(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
     bool inputstmt(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
@@ -27,8 +27,6 @@ private:
     bool term(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
     bool arithop(vector<string> &tok, vector<string>::iterator &tokIt, vector<string>::iterator &lexIt); //David L
     bool relop(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //Ethan
-    bool elsepart(vector<string> &tok, vector<string>::iterator &tokitr,
-                  vector<string>::iterator &lexitr);
 
     bool logicop(vector<string> &tok, vector<string>::iterator &tokitr,
                  vector<string>::iterator &lexitr);

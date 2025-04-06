@@ -10,6 +10,11 @@ bool SyntaxAnalyzer::vdecassign(std::vector<std::string> &tok, std::vector<std::
         ++tokitr;
         ++lexitr;
         if (tokitr != tok.end() && *tokitr == "t_id") {
+            string varName = *lexitr;
+            if (!checkDeclaration(varName)) {
+                cout << "Error: Variable '" << varName << "' already declared." << endl;
+                return false;
+            }
             ++tokitr;
             ++lexitr;
             if (tokitr != tok.end() && *tokitr == "s_assign" && *lexitr == "=") {

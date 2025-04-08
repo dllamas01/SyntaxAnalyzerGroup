@@ -1,0 +1,34 @@
+t_main : main
+s_lbrace : {
+t_integer : integer
+t_id : x
+s_assign : =
+t_number : 5
+s_semi : ;
+t_integer : integer
+t_id : y
+s_assign : =
+t_number : 6
+s_semi : ;
+t_if : if
+s_lparen : (
+t_id : x
+s_ne : !=
+t_id : y
+s_rparen : )
+s_lbrace : {
+t_output : output
+s_lparen : (
+t_text : Not Equal
+s_rparen : )
+s_semi : ;
+s_rbrace : }
+t_else : else
+s_lbrace : {
+t_output : output
+s_lparen : (
+t_text : You should not see this
+s_rparen : )
+s_semi : ;
+s_rbrace : }
+s_rbrace : }

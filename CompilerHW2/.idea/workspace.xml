@@ -7,7 +7,6 @@
     <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
     <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
-    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
   </component>
   <component name="CMakePresetLoader">{
   &quot;useNewFormat&quot;: true
@@ -29,7 +28,13 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="75b45551-388c-40f8-8c09-5ccc14898f3d" name="Changes" comment="" />
+    <list default="true" id="75b45551-388c-40f8-8c09-5ccc14898f3d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SyntaxAnalyzer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/SyntaxAnalyzer.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SyntaxAnalyzer.h" beforeDir="false" afterPath="$PROJECT_DIR$/SyntaxAnalyzer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sourcelexemes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/sourcelexemes.txt" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +63,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;CMake Application.CompilerHW2.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
@@ -82,6 +88,7 @@
       <recent name="C:\Users\super\Documents\GitHub\SyntaxAnalyzerGroup\CompilerHW2" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\super\Documents\GitHub\SyntaxAnalyzerGroup\CompilerHW2\cmake-build-debug" />
       <recent name="C:\Users\super\Documents\GitHub\SyntaxAnalyzerGroup\CompilerHW2" />
     </key>
   </component>
@@ -104,10 +111,18 @@
       <workItem from="1743789901323" duration="4395000" />
       <workItem from="1743869821525" duration="827000" />
       <workItem from="1743872510011" duration="3332000" />
+      <workItem from="1744049071309" duration="4430000" />
+      <workItem from="1744071438225" duration="666000" />
+      <workItem from="1744073037117" duration="3141000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
   </component>
 </project>

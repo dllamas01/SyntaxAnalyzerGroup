@@ -17,41 +17,26 @@ private:
     map<string, string> symboltable;
 
     // other private methods
-    bool vdecassign(vector<string> &tok,vector<string>::iterator &tokitr,vector<string>::iterator &lexitr); //Ethan
-    bool stmtlist(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //Ethan
-    bool elsepart(vector<string>& tok, vector<string>::iterator& tokitr, vector<string>::iterator& lexitr); //Ethan
-    bool whilestmt(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
-    bool assignstmt(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
-    bool inputstmt(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
-    bool simpleexpr(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //Ethan
-    bool term(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //David L
-    bool arithop(vector<string> &tok, vector<string>::iterator &tokIt, vector<string>::iterator &lexIt); //David L
-    bool relop(vector<string> &tok, vector<string>::iterator &tokitr, vector<string>::iterator &lexitr); //Ethan
-
-    bool logicop(vector<string> &tok, vector<string>::iterator &tokitr,
-                 vector<string>::iterator &lexitr);
-
-    bool expr(vector<string> &tok, vector<string>::iterator &tokitr,
-              vector<string>::iterator &lexitr);
-
-    bool outputstmt(vector<string> &tok, vector<string>::iterator &tokitr,
-                    vector<string>::iterator &lexitr);
-
-    bool ifstmt(vector<string> &tok, vector<string>::iterator &tokitr,
-                vector<string>::iterator &lexitr);
-
-    int stmt(vector<string> &tok, vector<string>::iterator &tokitr,
-             vector<string>::iterator &lexitr);
-
+    bool vdecassign(); //Ethan
+    bool stmtlist(); //Ethan
+    bool elsepart(); //Ethan
+    bool whilestmt(); //David L
+    bool assignstmt(); //David L
+    bool inputstmt(); //David L
+    bool simpleexpr(); //Ethan
+    bool term(); //David L
+    bool arithop(); //David L
+    bool relop(); //Ethan
+    bool logicop();//David G
+    bool expr();//David G
+    bool outputstmt();//David G
+    bool ifstmt();//David G
+    int stmt();//David G
+    void declareVariable(const string& varName);
     //A bool that returns true or false if a StmtList call is surrounded by brackets
-    bool checkStmtList(vector<string> &tok, vector<string>::iterator &tokitr,
-                       vector<string>::iterator &lexitr);
-
+    bool checkStmtList();
     //A bool that returns true or false if an Expr call is surrounded by parentheses
-    bool checkExpr(vector<string> &tok, vector<string>::iterator &tokitr,
-                   vector<string>::iterator &lexitr);
-
-
+    bool checkExpr();
     bool checkDeclaration(const string& varName);
 
 public:
